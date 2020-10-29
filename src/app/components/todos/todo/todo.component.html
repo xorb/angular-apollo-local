@@ -1,0 +1,17 @@
+<div *ngIf="!isEditing" class="todo" (dblclick)="onDoubleClick()">
+  <div [className]="todo.completed ? 'icon completed' : 'icon'" (click)="onCompleteTodo()">
+    <ion-icon name="checkmark-outline"></ion-icon>
+  </div>
+  <div [class.line]="todo.completed && 'line'">
+    <div class="text">{{ todo.text }}</div>
+  </div>
+  <div class="todo-actions">
+    <div class="icon" (click)="onEdit()">
+      <ion-icon name="create"></ion-icon>
+    </div>
+    <div class="icon" (click)="deleteTodo(todo.id)">
+      <ion-icon name="trash"></ion-icon>
+    </div>
+  </div>
+</div>
+<input autofocus *ngIf="isEditing" [value]="todo.text" [(ngModel)]="text" (keyup.enter)="onSaveTodo()" />

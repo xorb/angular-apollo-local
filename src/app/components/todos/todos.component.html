@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="content">
+    <div class="title">Things to do</div>
+
+    <!-- Todos -->
+    <div class="todos">
+      <app-todo
+        *ngFor="let todo of todos"
+        [todo]="todo"
+        [deleteTodo]="deleteTodo"
+        [editTodo]="editTodo"
+        [completeTodo]="completeTodo"
+      ></app-todo>
+      <input
+        autofocus
+        *ngIf="addInput"
+        (keyup.enter)="addTodo()"
+        [(ngModel)]="text"
+        type="text"
+        placeholder="add todo"
+        placeholder="What needs to be done?"
+      />
+    </div>
+
+    <!-- Footer -->
+    <div (click)="addInputElement()" *ngIf="!addInput" class="footer">
+      <div class="icon">
+        <ion-icon name="add"></ion-icon>
+      </div>
+    </div>
+  </div>
+</div>
